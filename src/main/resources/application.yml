@@ -1,0 +1,47 @@
+spring:
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: never
+
+jwt:
+  access-expiration-time: 300000
+  refresh-expiration-time: 604800000
+
+app:
+  cors:
+    allowed-origins: []
+  ai:
+    provider: GEMINI
+    openai:
+      enabled: ${OPENAI_ENABLED:false}
+      api-key: ${OPENAI_API_KEY:}
+      model: ${OPENAI_MODEL:}
+      base-url: ${OPENAI_BASE_URL:}
+      timeout-seconds: ${OPENAI_TIMEOUT_SECONDS:10}
+    gemini:
+      enabled: ${GEMINI_ENABLED:false}
+      api-key: ${GEMINI_API_KEY:}
+      model: ${GEMINI_MODEL:}
+      base-url: ${GEMINI_BASE_URL:}
+      timeout-seconds: ${GEMINI_TIMEOUT_SECONDS:10}
+  security:
+    cookie:
+      secure: false
+      same-site: Lax
+      path: /api/account
+      max-age-seconds: 604800
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    root: info
