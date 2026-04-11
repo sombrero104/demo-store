@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/local_store
+    username: local_user
+    password: local_password
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password:
+      database: 0
+      timeout: 3s
+      connect-timeout: 3s
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        highlight_sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+jwt:
+  secret: "NodGfz1e1W/rerb8J7RdBHegpgxlZJwrb3xmBqQLxo0="
+  access-expiration-time: 9999999999
+
+app:
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+  security:
+    cookie:
+      secure: false
+      same-site: Lax
+      path: /api/account
+      max-age-seconds: 604800
+
+logging:
+  level:
+    com.store: debug
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
