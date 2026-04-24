@@ -116,10 +116,7 @@ public class GeminiChatClient implements AiIntentClient {
         String intentValue = decisionNode.path("intent").asText("UNKNOWN");
         String reply = decisionNode.path("reply").asText("요청을 이해하지 못했습니다.");
 
-        return AiChatDecision.builder()
-                .intent(parseIntent(intentValue))
-                .reply(reply)
-                .build();
+        return new AiChatDecision(parseIntent(intentValue), reply);
     }
 
     private AiChatIntent parseIntent(String intentValue) {

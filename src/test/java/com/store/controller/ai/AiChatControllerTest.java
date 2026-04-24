@@ -102,10 +102,7 @@ class AiChatControllerTest {
     void chatReturnsOrderSummary() throws Exception {
         placeOrder();
         given(aiIntentClientRouter.decide(anyString()))
-                .willReturn(AiChatDecision.builder()
-                        .intent(AiChatIntent.ORDER_LIST)
-                        .reply("주문 내역을 확인해드릴게요.")
-                        .build());
+                .willReturn(new AiChatDecision(AiChatIntent.ORDER_LIST, "주문 내역을 확인해드릴게요."));
 
         mockMvc.perform(post("/api/ai/chat")
                         .header("Authorization", "Bearer " + getAccessToken())
@@ -127,10 +124,7 @@ class AiChatControllerTest {
     @Test
     void chatValidationErrorWhenMessageIsBlank() throws Exception {
         given(aiIntentClientRouter.decide(anyString()))
-                .willReturn(AiChatDecision.builder()
-                        .intent(AiChatIntent.UNKNOWN)
-                        .reply("지원하지 않는 요청입니다.")
-                        .build());
+                .willReturn(new AiChatDecision(AiChatIntent.UNKNOWN, "지원하지 않는 요청입니다."));
 
         mockMvc.perform(post("/api/ai/chat")
                         .header("Authorization", "Bearer " + getAccessToken())
