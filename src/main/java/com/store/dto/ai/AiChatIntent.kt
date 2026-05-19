@@ -1,6 +1,6 @@
-package com.store.dto.ai;
+package com.store.dto.ai
 
-public enum AiChatIntent {
+enum class AiChatIntent {
     ORDER_LIST,
     ORDER_CANCEL,
     ACCOUNT_HELP,
