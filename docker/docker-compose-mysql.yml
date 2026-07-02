@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_store
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: local_root_password
+      MYSQL_DATABASE: local_store
+      MYSQL_USER: local_user
+      MYSQL_PASSWORD: local_password
+    ports:
+      - "3306:3306"
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis_store
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
